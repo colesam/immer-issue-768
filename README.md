@@ -20,7 +20,9 @@ npm start
 This repository tests 9 scenarios that test different structures of state. You can find the tests
 in `src/reproduce.test.ts`. I outline the basic setup of each test and their results below.
 
-### TEST 1 - state.stocks is a map and stocks are plain objects, with patch replacing state.stocks ✅
+### TEST 1 ✅
+
+state.stocks is a map and stocks are plain objects, with patch replacing state.stocks
 
 ```ts
 
@@ -39,7 +41,9 @@ const errorProducingPatch = [
 
 ️This setup **does not reproduce** the issue described above.
 
-### TEST 2 - state.stocks is a map of [immerable] classes, with patch replacing state.stocks ⚠️
+### TEST 2 ⚠️
+
+state.stocks is a map of [immerable] classes, with patch replacing state.stocks
 
 ```ts
 type State = {
@@ -57,7 +61,9 @@ const errorProducingPatch = [
 
 ️This setup **reproduces** the issue described above.
 
-### TEST 3 - state.stocks is a map of [immerable] classes, with patch replacing state root ✅
+### TEST 3  ✅
+
+state.stocks is a map of [immerable] classes, with patch replacing state root
 
 ```ts
 type State = {
@@ -75,7 +81,9 @@ const errorProducingPatch = [
 
 ️This setup **does not reproduce** the issue described above.
 
-### TEST 4 - state.stocks is an object keying [immerable] classes, with patch replacing state.stocks ⚠️
+### TEST 4 ⚠️
+
+state.stocks is an object keying [immerable] classes, with patch replacing state.stocks
 
 ```ts
 type State = {
@@ -93,7 +101,9 @@ const errorProducingPatch = [
 
 ️This setup **reproduces** the issue described above.
 
-### TEST 5 - state.stocks is an array of [immerable] classes, with patch replacing state.stocks ⚠️
+### TEST 5 ⚠️
+
+state.stocks is an array of [immerable] classes, with patch replacing state.stocks
 
 ```ts
 type State = {
@@ -111,7 +121,9 @@ const errorProducingPatch = [
 
 ️This setup **reproduces** the issue described above.
 
-### TEST 6 - state.stock is a single [immerable] class, with patch replacing state.stock ⚠️
+### TEST 6 ⚠️
+
+state.stock is a single [immerable] class, with patch replacing state.stock
 
 ```ts
 type State = {
@@ -129,7 +141,9 @@ const errorProducingPatch = [
 
 ️This setup **reproduces** the issue described above.
 
-### TEST 7 - state is an array of [immerable] classes, with patch replacing state[0] ⚠️
+### TEST 7 ⚠️
+
+state is an array of [immerable] classes, with patch replacing state[0]
 
 ```ts
 type State = Stock[];
@@ -145,7 +159,9 @@ const errorProducingPatch = [
 
 ️This setup **reproduces** the issue described above.
 
-### TEST 8 - state is a map of [immerable] classes, with patch replacing state["INTC"] ⚠️
+### TEST 8 ⚠️
+
+state is a map of [immerable] classes, with patch replacing state["INTC"] 
 
 ```ts
 type State = Map<string, Stock>;
@@ -161,7 +177,9 @@ const errorProducingPatch = [
 
 ️This setup **reproduces** the issue described above.
 
-### TEST 9 - state is an [immerable] class, with patch replacing state root ✅
+### TEST 9 ✅
+
+state is an [immerable] class, with patch replacing state root
 
 ```ts
 type State = Stock;
